@@ -1,0 +1,43 @@
+<h4>Busqueda</h4>
+<app-busqueda (buscar)="MostrarElemento($event)"></app-busqueda>
+<div *ngIf="lista.length != 0">
+  <table border="1" style="width:100%">
+    <thead>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Legajo</th>
+      <th>Sueldo</th>
+      <th>Tipo</th>
+      <th>Sexo</th>
+      <th>Foto</th>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of lista">
+        <tr>
+          <!-- contenedor especial de angular, no afecta en estilos -->
+          <td>{{ item._id }}</td>
+          <td>{{ item.nombre | titlecase }}</td>
+          <td>{{ item.apellido | titlecase }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.legajo | number: "1.0-0" }}</td>
+          <td>{{ item.sueldo | currency: "CAD":"symbol-narrow":"4.2-2" }}</td>
+          <td>
+            <ng-container *ngIf="item.sueldo > 90000">Senior</ng-container>
+            <ng-container *ngIf="item.sueldo <= 90000 && item.sueldo > 40000"
+              >Semi Senior</ng-container
+            >
+            <ng-container *ngIf="item.sueldo <= 40000">Junior</ng-container>
+          </td>
+          <td>{{ item.sexo | titlecase }}</td>
+
+          <td>
+            <img src="../../../assets/{{ item.RutaDeFoto }}" class="autoFoto" />
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="sinResult == true">No hay resultados.</div>

@@ -1,0 +1,7 @@
+.invalido {
+  border:solid tomato;
+}
+
+.valido {
+  border: solid forestgreen;
+}

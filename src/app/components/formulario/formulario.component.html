@@ -1,0 +1,129 @@
+<form [formGroup]="profileGroup">
+  <table>
+    <tbody>
+      <tr>
+        <td><label>Nombre</label></td>
+        <td>
+          <input
+            type="text"
+            formControlName="nombre"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.nombre.valid &&
+                profileGroup.controls.nombre.touched,
+              valido: profileGroup.controls.nombre.valid
+            }"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Apellido</label></td>
+        <td>
+          <input
+            type="text"
+            formControlName="apellido"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.apellido.valid &&
+                profileGroup.controls.apellido.touched,
+              valido: profileGroup.controls.apellido.valid
+            }"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Email</label></td>
+        <td>
+          <input
+            type="text"
+            formControlName="email"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.email.valid &&
+                profileGroup.controls.email.touched,
+              valido: profileGroup.controls.email.valid
+            }"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Legajo</label></td>
+        <td>
+          <input
+            type="number"
+            min="1000"
+            max="2000"
+            formControlName="legajo"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.legajo.valid &&
+                profileGroup.controls.legajo.touched,
+              valido: profileGroup.controls.legajo.valid
+            }"
+            value="0"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Sueldo</label></td>
+        <td>
+          <input
+            type="number"
+            min="10000"
+            max="150000"
+            formControlName="sueldo"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.sueldo.valid &&
+                profileGroup.controls.sueldo.touched,
+              valido: profileGroup.controls.sueldo.valid
+            }"
+            value="0"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Sexo</label></td>
+        <td>
+          <select
+            formControlName="sexo"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.sexo.valid &&
+                profileGroup.controls.sexo.touched,
+              valido:
+                profileGroup.controls.sexo.valid &&
+                profileGroup.controls.sexo.touched
+            }"
+          >
+            <option value="femenino" selected>Femenino</option>
+            <option value="masculino">Masculino</option>
+            <option value="otro">Otro</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Foto</label></td>
+        <td>
+          <input
+            formControlName="RutaDeFoto"
+            [ngClass]="{
+              invalido:
+                !profileGroup.controls.RutaDeFoto.valid &&
+                profileGroup.controls.RutaDeFoto.touched,
+              valido: profileGroup.controls.RutaDeFoto.valid
+            }"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <button (click)="Mostrar()" [disabled]="profileGroup.invalid">
+            Subir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<div *ngIf="empleadoCargado==true">Carga exitosa</div>
